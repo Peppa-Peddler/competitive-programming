@@ -1,7 +1,22 @@
 # graph-theory
 A graph-theory repository for competitive programming
 
-## Template
+## Setup
+
+Compile
+
+```
+g++ -std=c++17
+```
+
+Run
+
+```
+./a.out
+```
+
+Template
+
 ```c++
 #include<bits/stdc++.h>
 
