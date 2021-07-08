@@ -25,6 +25,7 @@ Template
 #define PII pair<int, int>
 #define VI vector<int>
 #define PB push_back
+#define PQ priority_queue
 
 #define MP make_pair
 #define F first
