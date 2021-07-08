@@ -39,6 +39,8 @@ Template
 
 #define N N5
 
+#define clear(v, a) memset(v, a, sizeof(v))
+#define all(x)
 #define R(i, n) for(int i=0; i<n; i++)
 #define SZ(x) ((int)(x).size())
 
