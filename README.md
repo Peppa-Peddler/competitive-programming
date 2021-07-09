@@ -41,8 +41,8 @@ Template
 
 #define N N5
 
-#define clear(v, a) memset(v, a, sizeof(v))
-#define all(x)
+#define clr(v, a) memset(v, a, sizeof(v))
+#define all(x) x.begin(),x.end()
 #define R(i, n) for(int i=0; i<n; i++)
 #define SZ(x) ((int)(x).size())
 
@@ -53,6 +53,7 @@ Template
 |  |  Y Y  \  | \_\ \/ __ \\  \___|    <
 |__|__|_|  /  |___  (____  /\___  >__|_ \
          \/       \/     \/     \/     \/
+
 ⢸⣿⣿⣿⣿⠃⠄⢀⣴⡾⠃⠄⠄⠄⠄⠄⠈⠺⠟⠛⠛⠛⠛⠻⢿⣿⣿⣿⣿⣶⣤⡀⠄
 ⢸⣿⣿⣿⡟⢀⣴⣿⡿⠁⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⣸⣿⣿⣿⣿⣿⣿⣿⣷
 ⢸⣿⣿⠟⣴⣿⡿⡟⡼⢹⣷⢲⡶⣖⣾⣶⢄⠄⠄⠄⠄⠄⢀⣼⣿⢿⣿⣿⣿⣿⣿⣿⣿
@@ -68,16 +69,15 @@ Template
 ⢸⠇⡜⣿⡟⠄⠄⠄⠈⠙⣿⣿⣿⣿⣿⣿⣿⣿⠟⣱⣻⣿⣿⣿⣿⣿⠟⠁⢳⠃⣿⣿⣿
 ⠄⣰⡗⠹⣿⣄⠄⠄⠄⢀⣿⣿⣿⣿⣿⣿⠟⣅⣥⣿⣿⣿⣿⠿⠋⠄⠄⣾⡌⢠⣿⡿⠃
 ⠜⠋⢠⣷⢻⣿⣿⣶⣾⣿⣿⣿⣿⠿⣛⣥⣾⣿⠿⠟⠛⠉⠄⠄
+
 */
 
 using namespace std;
 
-int n,t=1;
+int n, m, k, t = 1;
 
 int solve(){
   cin >> n;
-  cout << N << endl;
-  int v[N];
   return 0;
 }
 
@@ -85,7 +85,9 @@ int main(){
 
   cin >> t;
   while(t--) cout << solve() << endl;
+  //while(t--) solve();
 
 }
+
 
 ```
