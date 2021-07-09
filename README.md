@@ -32,6 +32,7 @@ Template
 #define S second
 
 #define MOD 1000000007
+#define N6 1000006
 #define N5 100005
 #define N4 10004
 #define N3 1003
