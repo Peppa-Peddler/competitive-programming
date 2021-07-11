@@ -66,7 +66,7 @@ int solve(){
 
   R(i, n){
     cin >> x;
-    ca |= can << x;
+    can |= can << x;
   }
 
   return can[W] ? "YES":"NO";
