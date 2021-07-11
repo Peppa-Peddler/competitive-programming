@@ -1,5 +1,5 @@
-# graph-theory
-A graph-theory repository for competitive programming
+# Competitive programming
+A repository for competitive programming
 
 ## Setup
 
