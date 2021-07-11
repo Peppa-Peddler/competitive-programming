@@ -61,7 +61,7 @@ string solve(){
 
   m = n / 2;
 
-  int L = 99999997;
+  int L = 999999937;
 
   if( k == 0 and n != 1 ) return "-1";
   if( n == 1 and k != 0 ) return "-1";
