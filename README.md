@@ -44,7 +44,13 @@ Template
 #define clr(v, a) memset(v, a, sizeof(v))
 #define all(x) x.begin(),x.end()
 #define R(i, n) for(int i=0; i<n; i++)
-#define SZ(x) ((int)(x).size())
+#define len(x) ((int)(x).size())
+
+#define bits(x) __builtin_popcount(x)
+#define bitsLL(x) __builtin_popcountll(x)
+
+#define zerosl(x) __builtin_clz(x)
+#define zerosr(x) __builtin_ctz(x)
 
 /*
 .__          ___.                  __
