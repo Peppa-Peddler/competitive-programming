@@ -24,8 +24,10 @@
 #define clr(v, a) memset(v, a, sizeof(v))
 #define all(x) x.begin(),x.end()
 #define R(i, n) for(int i=0; i<n; i++)
-#define SZ(x) ((int)(x).size())
+#define len(x) ((int)(x).size())
 
+#define bits(x) __builtin_popcount(x)
+#define bitsLL(x) __builtin_popcountll(x)
 /*
 .__          ___.                  __
 |__| _____   \_ |__ _____    ____ |  | __
@@ -63,7 +65,7 @@ int solve(){
 
 int main(){
 
-  cin >> t;
+  //cin >> t;
   while(t--) cout << solve() << endl;
   //while(t--) solve();
 
