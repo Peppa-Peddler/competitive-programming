@@ -28,6 +28,10 @@
 
 #define bits(x) __builtin_popcount(x)
 #define bitsLL(x) __builtin_popcountll(x)
+
+#define zerosl(x) __builtin_clz(x)
+#define zerosr(x) __builtin_ctz(x)
+
 /*
 .__          ___.                  __
 |__| _____   \_ |__ _____    ____ |  | __
