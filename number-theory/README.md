@@ -42,3 +42,11 @@ void prefac(int Nmax, int mod){
     FI[ i ] = FI[ i - 1 ]*INV[ i ] % mod;
 }
 ```
+Combinatoria: nCk mod P
+
+```c++
+LL C( LL n, LL k, int mod ){
+  if( n < k ) return 0;
+  return F[ n ] * FI[ k ] % mod * FI[ n - k ] % mod;
+}
+```
