@@ -25,10 +25,15 @@ void prefac(int Nmax, int mod){
     FI[ i ] = FI[ i - 1 ]*INV[ i ] % mod;
 }
 
+LL C( LL n, LL k, int mod ){
+  if( n < k ) return 0;
+  return F[ n ] * FI[ k ] % mod * FI[ n - k ] % mod;
+}
 
 int main(){
   prefac(N5, 31);
   for(int i = 1; i <= 10; i++){
     cout << F[ i ] << " " <<  INV[ i ] << endl;
   }
+  cout << C(6, 2, 31) << endl;
 }
