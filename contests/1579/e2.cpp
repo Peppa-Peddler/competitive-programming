@@ -90,9 +90,9 @@ LL solve(){
     }
 	
     R(i, n) a[ i ] = lower_bound(all(ot), a[ i ]) - ot.begin() + 1;
-
+	
 	LL s = 0;
-
+	
 	R(i, n){
 		s += min( query( a[ i ] - 1 ), query( n ) - query( a[ i ] ));
 		update( a[i] );
