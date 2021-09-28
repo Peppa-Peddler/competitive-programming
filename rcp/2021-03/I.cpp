@@ -79,21 +79,22 @@ LL solve(){
     LL ans = 0;
 
     while( L < n and R < n ){
-
         while( R < n && b[ a[ R ] ] == 0 ) b[ a[ R++ ] ] ++;
         if( R < n ) b[ a[ R ] ] ++;
-
         while( L < n && b[ a[ L ] ] == 1 ) {
             ans += R - L;
             b[ a[ L++ ] ] --;
         }
-
         if( L < n ){
             ans += R - L;
             b[ a[ L ] ] --;
         }
+        L++, R++;
+    }
 
-        R++, L++;
+    while( L < n ) {
+        ans += n - L;
+        L ++;
     }
 
     return ans;
