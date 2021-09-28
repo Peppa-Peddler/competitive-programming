@@ -33,13 +33,6 @@
 #define zerosr(x) __builtin_ctz(x)
 
 /*
-.__          ___.                  __
-|__| _____   \_ |__ _____    ____ |  | __
-|  |/     \   | __ \\__  \ _/ ___\|  |/ /
-|  |  Y Y  \  | \_\ \/ __ \\  \___|    <
-|__|__|_|  /  |___  (____  /\___  >__|_ \
-         \/       \/     \/     \/     \/
-
 ⢸⣿⣿⣿⣿⠃⠄⢀⣴⡾⠃⠄⠄⠄⠄⠄⠈⠺⠟⠛⠛⠛⠛⠻⢿⣿⣿⣿⣿⣶⣤⡀⠄
 ⢸⣿⣿⣿⡟⢀⣴⣿⡿⠁⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⣸⣿⣿⣿⣿⣿⣿⣿⣷
 ⢸⣿⣿⠟⣴⣿⡿⡟⡼⢹⣷⢲⡶⣖⣾⣶⢄⠄⠄⠄⠄⠄⢀⣼⣿⢿⣿⣿⣿⣿⣿⣿⣿
@@ -55,90 +48,93 @@
 ⢸⠇⡜⣿⡟⠄⠄⠄⠈⠙⣿⣿⣿⣿⣿⣿⣿⣿⠟⣱⣻⣿⣿⣿⣿⣿⠟⠁⢳⠃⣿⣿⣿
 ⠄⣰⡗⠹⣿⣄⠄⠄⠄⢀⣿⣿⣿⣿⣿⣿⠟⣅⣥⣿⣿⣿⣿⠿⠋⠄⠄⣾⡌⢠⣿⡿⠃
 ⠜⠋⢠⣷⢻⣿⣿⣶⣾⣿⣿⣿⣿⠿⣛⣥⣾⣿⠿⠟⠛⠉⠄⠄
-
 */
 
 using namespace std;
 
 int n, m, k, t = 1;
 
-PII x[N5];
-PII y[N5];
-bool f[N5][4];
+PII v[ 2*N5 ];
+LL DP[ 2*N5 ][ 7 ];
 
-int getx(){
-  int i = 0, id, k, ans;
-  while( i < n ){
-    id = x[i].S;
-    if( !f[id][2] ) break;
-    i++;
-  }
-  if( i == n ) return i - 1;
-  ans = i;
-  i ++;
-  while( i < n && x[i].F == x[i - 1].F ) i++;
-  while( i < n ){
-    id = x[i].S;
-    if( !f[id][0] ) break;
-    i++;
-  }
-  if( i >= n ){
-    return ans;
-  }
-  return -1;
-}
+int team[ 2*N5 ];
+int ans[ 2*N5 ];
 
-int gety(){
-  int i = 0, id, k, ans;
-  while( i < n ){
-    id = y[i].S;
-    if( !f[id][1] ) break;
-    i++;
-  }
-  if( i == n ) return i - 1;
-  ans = i;
-  i ++;
-  while( i < n && y[i].F == y[i - 1].F ) i++;
-  while( i < n ){
-    id = y[i].S;
-    if( !f[id][3] ) break;
-    i++;
-  }
-  if( i >= n ){
-    return ans;
-  }
-  return -1;
-}
+LL solve(){
+    cin >> n;
 
-int solve(){
-  cin >> n;
+    R(i, n) {
+        cin >> v[ i ].F;
+        v[ i ].S = i;
+    }
 
-  R(i, n){
-    cin >> x[i].F >> y[i].F >> f[i][0] >> f[i][1] >> f[i][2] >> f[i][3];
-    x[i].S = i;
-    y[i].S = i;
-  }
+    sort(v, v + n);
 
-  sort(x, x + n);
-  sort(y, y + n);
+    R(i, n) R(j, 7) DP[ i ][ j ] = MOD;
 
-  int ansx = getx();
-  int ansy = gety();
+    LL tmp;
+    for( int i = n - 1; i >= 0; i-- ){
+        for( int k = min(5, i + 1); k >= 1; k-- ){
+            if( i == n - 1 and k < 3 ){
+                DP[ i ][ k ] = MOD;
+                continue;
+            }
+            DP[ i ][ k ] = v[ i ].F - v[ i - k + 1 ].F;
+            if( i == n - 1 ) continue;
+            if( k < 3 ) {
+                DP[ i ][ k ] = DP[ i + 1 ][ k + 1 ];
+                continue;
+            }
+            DP[ i ][ k ] += DP[ i + 1 ][ 1 ];
+            if( k == 5 ){
+                tmp = v[ i - 2 ].F - v[ i - 4 ].F + DP[ i + 1 ][ 3 ];
+                DP[ i ][ k ] = min( tmp, DP[ i ][ k ] );
+                continue;
+            }
+            DP[ i ][ k ] = min( DP[ i ][ k ], DP[ i + 1 ][ k + 1 ] );
+        }
+    }
 
-  if( ansx == -1 or ansy == -1 ){
-    cout << "0" << endl;
+    cout << DP[ 0 ][ 1 ] << " ";
+
+    int i = 0, k = 1, eq = 1, lft, rgt;
+    while( i < n - 1 ){
+
+        team[ i ] = eq;
+
+        if( k < 3 ) {
+            i++, k++;
+            continue;
+        }
+
+        lft = v[ i ].F - v[ i - k + 1 ].F + DP[ i + 1 ][ 1 ];
+        rgt = DP[ i + 1 ][ k + 1 ];
+
+        if( lft <= rgt ){
+            i ++, eq++;
+            k = 1;
+        } else{
+            i++, k++;
+        }
+
+    }
+
+    team[ i ] = eq;
+
+    cout << eq << endl;
+
+    R(i, n)
+        ans[ v[ i ].S ] = team[ i ];
+
+    R(i, n) cout << ans[ i ] << " "; cout << endl;
+
     return 0;
-  }
-
-  cout << "1 " << x[ansx].F << " " << y[ansy].F << endl;
-
-  return 0;
 }
 
 int main(){
 
-  cin >> t;
-  //while(t--) cout << solve() << endl;
-  while(t--) solve();
+    //cin >> t;
+    //while(t--) cout << solve() << endl;
+    while(t--) solve();
 
 }

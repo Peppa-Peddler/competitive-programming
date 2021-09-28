@@ -33,6 +33,13 @@
 #define zerosr(x) __builtin_ctz(x)
 
 /*
+.__          ___.                  __
+|__| _____   \_ |__ _____    ____ |  | __
+|  |/     \   | __ \\__  \ _/ ___\|  |/ /
+|  |  Y Y  \  | \_\ \/ __ \\  \___|    <
+|__|__|_|  /  |___  (____  /\___  >__|_ \
+         \/       \/     \/     \/     \/
+
 ⢸⣿⣿⣿⣿⠃⠄⢀⣴⡾⠃⠄⠄⠄⠄⠄⠈⠺⠟⠛⠛⠛⠛⠻⢿⣿⣿⣿⣿⣶⣤⡀⠄
 ⢸⣿⣿⣿⡟⢀⣴⣿⡿⠁⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⣸⣿⣿⣿⣿⣿⣿⣿⣷
 ⢸⣿⣿⠟⣴⣿⡿⡟⡼⢹⣷⢲⡶⣖⣾⣶⢄⠄⠄⠄⠄⠄⢀⣼⣿⢿⣿⣿⣿⣿⣿⣿⣿
@@ -48,49 +55,90 @@
 ⢸⠇⡜⣿⡟⠄⠄⠄⠈⠙⣿⣿⣿⣿⣿⣿⣿⣿⠟⣱⣻⣿⣿⣿⣿⣿⠟⠁⢳⠃⣿⣿⣿
 ⠄⣰⡗⠹⣿⣄⠄⠄⠄⢀⣿⣿⣿⣿⣿⣿⠟⣅⣥⣿⣿⣿⣿⠿⠋⠄⠄⣾⡌⢠⣿⡿⠃
 ⠜⠋⢠⣷⢻⣿⣿⣶⣾⣿⣿⣿⣿⠿⣛⣥⣾⣿⠿⠟⠛⠉⠄⠄
+
 */
 
 using namespace std;
 
 int n, m, k, t = 1;
 
-LL solve(){
-  cin >> n >> m;
+PII x[ N5 ];
+PII y[ N5 ];
+bool f[ N5 ][ 4 ];
 
-  LL a[ N5 ], c[ N5 ], p[ N5 ], d[ N5 ];
-
-  PQ <PII> C;
-
-  R(i, n) cin >> a[ i ];
-  R(i, n) {cin >> c[ i ]; C.push(MP(-c[i], i));}
-  R(i, m) cin >> p[ i ] >> d[ i ];
-
-  LL costo, tomado, head;
-  R(i, m){
-    costo = 0;
-    tomado = min( d[ i ], a[ p[ i ] - 1 ] );
-    costo += tomado*c[ p[ i ] - 1 ];
-    d[ i ] -= tomado;
-    a[ p [ i ] - 1 ] -= tomado;
-    while( !C.empty() and d[ i ] ){
-      head = C.top().S;
-      tomado = min( d[ i ], a[ head ] );
-      costo += tomado*c[ head ];
-      d[ i ] -= tomado;
-      a[ head ] -= tomado;
-      if( a[ head ] == 0 ) C.pop();
-    }
-    if( d[ i ] ) cout << 0 << endl;
-    else cout << costo << endl;
+int getx(){
+  int i = 0, id, k, ans;
+  while( i < n ){
+    id = x[i].S;
+    if( !f[id][2] ) break;
+    i++;
   }
+  if( i == n ) return i - 1;
+  ans = i;
+  i ++;
+  while( i < n && x[i].F == x[i - 1].F ) i++;
+  while( i < n ){
+    id = x[i].S;
+    if( !f[id][0] ) break;
+    i++;
+  }
+  if( i >= n ){
+    return ans;
+  }
+  return -1;
+}
+
+int gety(){
+  int i = 0, id, k, ans;
+  while( i < n ){
+    id = y[i].S;
+    if( !f[id][1] ) break;
+    i++;
+  }
+  if( i == n ) return i - 1;
+  ans = i;
+  i ++;
+  while( i < n && y[i].F == y[i - 1].F ) i++;
+  while( i < n ){
+    id = y[i].S;
+    if( !f[id][3] ) break;
+    i++;
+  }
+  if( i >= n ){
+    return ans;
+  }
+  return -1;
+}
+
+int solve(){
+  cin >> n;
+
+  R(i, n){
+    cin >> x[i].F >> y[i].F >> f[i][0] >> f[i][1] >> f[i][2] >> f[i][3];
+    x[i].S = i;
+    y[i].S = i;
+  }
+
+  sort(x, x + n);
+  sort(y, y + n);
+
+  int ansx = getx();
+  int ansy = gety();
+
+  if( ansx == -1 or ansy == -1 ){
+    cout << "0" << endl;
+    return 0;
+  }
+
+  cout << "1 " << x[ansx].F << " " << y[ansy].F << endl;
 
   return 0;
 }
 
 int main(){
 
-    //cin >> t;
+  cin >> t;
   //while(t--) cout << solve() << endl;
-    while(t--) solve();
+  while(t--) solve();
 
 }
