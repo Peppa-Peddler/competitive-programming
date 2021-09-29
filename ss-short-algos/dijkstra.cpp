@@ -1,60 +1,97 @@
-#include<iostream>
-#include<vector>
-#include<queue>
-#include<cstring>
+#include<bits/stdc++.h>
 
-#define VI vector<int>
-#define N 10005
-#define GRAPH(g) VI g[N]
-#define PII pair<int, int>
+#define EP emplace
+#define EB emplace_back
+#define PB push_back
+#define PF push_front
+#define QTOP front
+#define STOP top
+#define PQTOP top
+
+#define PQ priority_queue
+
 #define MP make_pair
+#define F first
+#define S second
+
 #define X first
-#define Y second
+#define Y second.first
+#define Z second.second
+
+#define MOD7 1000000007
+#define MOD9 1000000009
+#define MOD 998244353
+
+#define N6 1000006
+#define N5 100005
+#define N4 10004
+#define N3 1003
+#define PI 3.1415926535897932384626
+#define all(x) x.begin(),x.end()
+#define R(i, n) for(ll i = 0; i < ll(n) ; i++)
+
+#define FER(i,a,b) for(ll i=ll(a); i< ll(b); ++i)
+#define REF(i,a,b) for(ll i=ll(a); i>=ll(b); --i )
+
+#define len(x) ((int)(x).size())
+#define elif else if
+
+
+#define sqr(x) 1LL * (x) * (x)
+#define INF (ll) 1e15
+
+#define fastio ios_base::sync_with_stdio(0); cin.tie(0)
 
 using namespace std;
 
-GRAPH(v);
-GRAPH(e);
+typedef long long ll;
+typedef pair<ll, ll> ii;
+typedef pair<ll, ii > tri;
+typedef vector<ll> vi;
+typedef vector<ii> vii;
+typedef tuple<int, int> Node;
+typedef vector<vi> graph;
+typedef vector<vii> edges;
 
-int vis[N];
+#define N N5
 
-void dijkstra(int source){
-  memset(vis, -1, sizeof(vis));
-  priority_queue<PII>PQ;
-  PQ.push(MP(0, source));
-  int curr, dist, edge;
-  while(!PQ.empty()){
-    curr = PQ.top().Y;
-    dist = PQ.top().X;
-    PQ.pop();
-    if( vis[curr] != -1 ) continue;
-    vis[curr] = -dist;
-    for(int i = 0; i < v[curr].size(); i++){
-      edge = -e[curr][i] + dist;
-      PQ.push(MP(edge, v[curr][i]));
-    }
-  }
+ll n, m, t = 1, ans;
+vi dist(N);
+edges adj(N);
+
+void dijkstra(int src){
+	PQ< Node > Q;
+	fill(all(dist), -1);
+	Q.EP( 0, src );
+	while(!Q.empty()){
+		int v, d;
+		tie(d, v) = Q.top(); Q.pop();
+		if( dist[ v ] != -1 ) continue;
+		dist[ v ] = -d;
+		for( auto el: adj[ v ] ) Q.EP( d - el.S , el.F );
+	}
+}
+
+ll solve(){
+	cin >> n >> m;
+	int a, b, d;
+	R(i, m){
+		cin >> a >> b >> d;
+		adj[a].EB(b, d);
+		adj[b].EB(a, d);
+	}
+	
+	dijkstra(0);
+	
+		R(i, n)
+		cout << dist[i] << " \n"[ i == n - 1 ];
+	
+  return 0;
 }
 
 int main(){
-
-  int n, m;
-  int a,b,d;
-
-  cin >> n >> m;
-
-  for(int i = 0; i < m; i++){
-    cin >> a >> b >> d;
-    v[a].push_back(b);
-    v[b].push_back(a);
-    e[a].push_back(d);
-    e[b].push_back(d);
-  }
-
-  dijkstra(0);
-
-  for(int i = 0; i < n; i++){
-    cout << vis[i] << endl;
-  }
-
+	fastio;
+    //cin >> t;
+    //while(t--) cout << solve() << endl;
+    while(t--) solve();
 }
