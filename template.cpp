@@ -1,5 +1,7 @@
 #include<bits/stdc++.h>
 
+#define EP emplace
+#define EB emplace_back
 #define PB push_back
 #define PF push_front
 #define QTOP front
@@ -25,8 +27,6 @@
 #define N4 10004
 #define N3 1003
 #define PI 3.1415926535897932384626
-
-#define fill(x, v) memset(x, v, sizeof(x))
 #define all(x) x.begin(),x.end()
 #define R(i, n) for(ll i = 0; i < ll(n) ; i++)
 
@@ -49,6 +49,9 @@ typedef pair<ll, ll> ii;
 typedef pair<ll, ii > tri;
 typedef vector<ll> vi;
 typedef vector<ii> vii;
+typedef vector<vi> graph;
+typedef vector<vii> edges;
+typedef tuple<int, int> Node;
 
 #define N N5
 
