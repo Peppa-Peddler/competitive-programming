@@ -27,7 +27,9 @@
 #define N4 10004
 #define N3 1003
 #define PI 3.1415926535897932384626
-#define all(x) x.begin(),x.end()
+#define all(x) (x).begin(), (x).end()
+#define rall(x) (x).rbegin(), (x).rend()
+#define same(x) x.erase(unique(all(x)), x.end())
 #define R(i, n) for(ll i = 0; i < ll(n) ; i++)
 
 #define FER(i,a,b) for(ll i=ll(a); i< ll(b); ++i)
@@ -35,7 +37,6 @@
 
 #define len(x) ((int)(x).size())
 #define elif else if
-
 
 #define sqr(x) 1LL * (x) * (x)
 #define INF (ll) 1e15
@@ -53,18 +54,21 @@ typedef vector<vi> graph;
 typedef vector<vii> edges;
 typedef tuple<int, int> Node;
 
+ll nxt() { ll x; cin >> x; return x; }
+
 #define N N5
 
-ll n, m, t = 1, ans;
+ll n, m, T = 1, ans;
 
 ll solve(){
-	cin >> n;
-    return 0;
+	n = nxt();
+	return 0;
 }
 
 int main(){
 	fastio;
-    //cin >> t;
-    while(t--) cout << solve() << endl;
-    //while(t--) solve();
+	//T = nxt();
+	while(T--) cout << solve() << endl;
+	//while(T--) solve();
+	return 0;
 }
