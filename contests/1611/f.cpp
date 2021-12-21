@@ -59,109 +59,87 @@ ll nxt() { ll x; cin >> x; return x; }
 #define N 2*N5
 
 ll n, m, T = 1, ans;
-ll v[ N ];
-ll vis[ N ];
-ll a[ N ];
-int t[ 4*N ];
+ll v[ N ], s[ N ];
 
-void END(){
-	cout << -1 << endl;
+ll q( int l, int r ){
+	ll L = 0, R = 0;
+	if( l > 0 ) L = s[ l - 1 ];
+	if( r >= 0 ) R = s[ r ];
+	return R - L;
 }
+
+ll t[ 4 * N ];
 
 void build(int v, int tl, int tr) {
     if (tl == tr) {
-        t[v] = a[tl];
+        t[v] = s[ tl ];
     } else {
-        int tm = (tl + tr) / 2;
-        build( v*2, tl, tm);
-        build( v*2+1, tm+1, tr);
-        t[v] = max( t[v*2] , t[v*2+1] );
+        int tm = ( tl + tr ) / 2;
+        build( v * 2, tl , tm );
+        build( v * 2 + 1 , tm + 1 , tr );
+        t[v] = min( t[ v * 2 ] , t[ v * 2 + 1 ] );
     }
 }
 
-int sum(int v, int tl, int tr, int l, int r) {
+ll sum(int v, int tl, int tr, int l, int r) {
     if (l > r)
-        return 0;
+        return MOD9*1LL*MOD9;
     if (l == tl && r == tr) {
         return t[v];
     }
     int tm = (tl + tr) / 2;
-    return max(sum(v*2, tl, tm, l, min(r, tm)),
+    return min(sum(v*2, tl, tm, l, min(r, tm)),
 			   sum(v*2+1, tm+1, tr, max(l, tm+1), r));
 }
 
-void update(int v, int tl, int tr, int pos) {
-    if (tl == tr) {
-        t[v] = 0;
-    } else {
-        int tm = (tl + tr) / 2;
-        if (pos <= tm)
-            update(v*2, tl, tm, pos);
-        else
-            update(v*2+1, tm+1, tr, pos);
-        t[v] = max( t[v*2] , t[v*2+1] );
-    }
+ll menor(int l, int r){
+	return sum(1, 0, n - 1, l , r) + m - q( 0 , l - 1 );
 }
 
-void erase( int pos ){
-	update( 1, 0, n + 1, pos );
+ii bstry( int k ){
+	R(i, n - k + 1)
+		if( menor( i , i + k - 1 ) >= 0 )
+			return {true, i};
+	return {false, -1};
 }
 
-int maxmen( int pos ){
-	return sum( 1 , 0, n + 1 , 0 , pos - 1 );
-}
+ll solve(){
 
-void solve(){
 	n = nxt();
+
 	m = nxt();
 
-	R(i, m) v[ i ] = nxt();
+	R(i, n)
+		cin >> v[ i ];
 
-	R(i, n + 1) a[ i ] = i;
-	build( 1 , 0 , n + 1);
+	s[ 0 ] = v[ 0 ];
 
-	int search = 1;
-	stack < int > s;
-	vi ans;
+	R(i, n - 1)
+		s[ i + 1 ] = s[ i ] + v[ i + 1 ];
 
-	s.push( n + 1 );
+	build(1, 0, n - 1);
 
-	int i = 0, q;
+	int l = 0, r = n + 1, mid;
 
-	while( search <= n ){
-		if( vis[ search ] ){
-			if( s.top() != search ) return END();
-			s.pop();
-			search ++;
-			continue;
-   		}
-		if( i < m ){
-			s.push( v[ i ] );
-			ans.PB( v[ i ] );
-			erase( v[ i ] );
-			vis[ v[ i++ ] ] = 1;
-			continue;
-		}
-
-		q = maxmen( s.top() );
-
-		if( !q ) return END();
-
-		s.push( q );
-		vis[ q ] = 1;
-		ans.PB( q );
-		erase( q );
+	while( r - l > 1 ){
+		mid = ( r + l ) / 2;
+		if( bstry( mid ).F ) l = mid;
+		else r = mid;
 	}
 
-	R(i, n)
-		cout << ans[ i ] << " ";
-	cout << endl;
+	if( !l ){
+		cout << -1 << endl;
+	} else {
+		int id = bstry( l ).S;
+		cout << id + 1 << " " << id + l << endl;
+	}
 
+	return 0;
 }
 
 int main(){
 	fastio;
-	//T = nxt();
+	T = nxt();
 	//while(T--) cout << solve() << endl;
 	while(T--) solve();
 	return 0;
