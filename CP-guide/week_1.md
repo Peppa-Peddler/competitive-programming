@@ -10,6 +10,10 @@ Viernes 03 9pm
 - Complejidad computacional y Jueces Online
 - Introducción a Teoría de números.
 
+#### Recursos / Lecturas:
+- https://www.youtube.com/watch?v=4N4YS5nXM4E
+- https://byjus.com/maths/fundamental-theorem-arithmetic/
+
 ## Puntos / Objetivos / Etc:
 - Hábito de resolver problemas a diario (primeros pasos).
 - Algunas medidas/reglas para practicar CP.
