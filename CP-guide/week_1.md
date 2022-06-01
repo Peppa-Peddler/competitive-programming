@@ -2,6 +2,14 @@
 
 Estado: (Ongoing) Este documento ser irá actualizando durante la semana.
 
+## Sesiones de la semana:
+#### Fechas:
+Viernes 03 9pm
+#### Contenido:
+- Upsolving de problemas incompletos.
+- Complejidad computacional y Jueces Online
+- Introducción a Teoría de números.
+
 ## Puntos / Objetivos / Etc:
 - Hábito de resolver problemas a diario (primeros pasos).
 - Algunas medidas/reglas para practicar CP.
@@ -36,10 +44,4 @@ Estado: (Ongoing) Este documento ser irá actualizando durante la semana.
 -
 ### Su, Jun 5:
 
-## Sesiones de la semana:
-#### Fechas:
-Viernes 03 9pm
-#### Contenido:
-- Upsolving de problemas incompletos.
-- Complejidad computacional y Jueces Online
-- Introducción a Teoría de números.
+
