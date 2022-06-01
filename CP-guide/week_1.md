@@ -13,6 +13,7 @@ Viernes 03 9pm
 #### Recursos / Lecturas:
 - https://www.youtube.com/watch?v=4N4YS5nXM4E
 - https://byjus.com/maths/fundamental-theorem-arithmetic/
+- https://www.youtube.com/watch?v=bSdp2WeyuJY
 
 ## Puntos / Objetivos / Etc:
 - Hábito de resolver problemas a diario (primeros pasos).
