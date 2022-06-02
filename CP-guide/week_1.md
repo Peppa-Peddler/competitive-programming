@@ -49,9 +49,12 @@ Viernes 03 9pm
 - https://codeforces.com/contest/1555/problem/A
 
 ### Fr, Jun 3:
--
+- https://codeforces.com/problemset/problem/22/A
+
 ### Sa, Jun 4:
 -
+
 ### Su, Jun 5:
+-
 
 
