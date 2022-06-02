@@ -42,7 +42,10 @@ Viernes 03 9pm
 - https://codeforces.com/contest/1625/problem/A
 
 ### Th, Jun 2:
--
+- https://codeforces.com/contest/1621/problem/A
+- https://codeforces.com/contest/1616/problem/A
+- https://codeforces.com/contest/1555/problem/A
+
 ### Fr, Jun 3:
 -
 ### Sa, Jun 4:
