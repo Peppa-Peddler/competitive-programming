@@ -15,7 +15,7 @@ Viernes 03 9pm
 - https://www.youtube.com/watch?v=4N4YS5nXM4E
 - https://byjus.com/maths/fundamental-theorem-arithmetic/
 - https://www.youtube.com/watch?v=NfUxtnJ0CaY
-- https://www.youtube.com/watch?v=682xT_TcKUg
+- **Set**: https://www.youtube.com/watch?v=682xT_TcKUg
 
 ## Puntos / Objetivos / Etc:
 - Hábito de resolver problemas a diario (primeros pasos).
