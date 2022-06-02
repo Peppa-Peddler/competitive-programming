@@ -9,11 +9,13 @@ Viernes 03 9pm
 - Upsolving de problemas incompletos.
 - Complejidad computacional y Jueces Online
 - Introducción a Teoría de números.
+- Libreria STL: Set
 
 #### Recursos / Lecturas:
 - https://www.youtube.com/watch?v=4N4YS5nXM4E
 - https://byjus.com/maths/fundamental-theorem-arithmetic/
 - https://www.youtube.com/watch?v=NfUxtnJ0CaY
+- https://www.youtube.com/watch?v=682xT_TcKUg
 
 ## Puntos / Objetivos / Etc:
 - Hábito de resolver problemas a diario (primeros pasos).
