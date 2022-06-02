@@ -50,6 +50,7 @@ Viernes 03 9pm
 
 ### Fr, Jun 3:
 - https://codeforces.com/problemset/problem/22/A
+- https://codeforces.com/contest/1312/problem/B
 
 ### Sa, Jun 4:
 -
