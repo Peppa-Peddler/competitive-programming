@@ -2,6 +2,13 @@
 
 Estado: (Ongoing) Este documento ser irá actualizando durante la semana.
 
+[Ver temas](https://docs.google.com/spreadsheets/d/1AzF4fb6XD-0izqK9EdXhfnTFuXAuwGM8adgtvkPqZiU/edit?usp=sharing) (Google Doc)
+
+### Temas de estas primeras semanas:
+
+- STL library / Mainstream Data Structures
+- Primes / Prime Test / Erastostenes / Decomposition
+
 ## Sesiones de la semana:
 #### Fechas:
 Viernes 03 9pm
