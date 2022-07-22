@@ -4,6 +4,9 @@
 #define EB emplace_back
 #define PB push_back
 #define PF push_front
+#define QTOP front
+#define STOP top
+#define PQTOP top
 
 #define PQ priority_queue
 
@@ -53,19 +56,63 @@ typedef tuple<int, int> Node;
 
 ll nxt() { ll x; cin >> x; return x; }
 
-#define N N5
+#define N N5 + 5
 
 ll n, m, T = 1, ans;
 
+vi lp(N+1), pr;
+
+void criba(){
+	for (ll i=2; i <= N; ++i) {
+		if (lp[i] == 0) {
+			lp[i] = i;
+			pr.push_back(i);
+		}
+		for (ll j=0; j < (int)pr.size() && pr[j] <= lp[i] && i*pr[j] <= N; ++j) {
+			lp[i * pr[j]] = pr[j];
+		}
+	}
+}
+
+ll binpow( ll a, ll e ){
+  ll ans = 1;
+  while( e ){
+    if( e & 1 ) ans = ans * a;
+    a = a * a; e >>= 1;
+  }
+  return ans;
+}
+
 ll solve(){
-	n = nxt();
-	return 0;
+
+	cin >> n >> m;
+
+	if( __gcd( n , m ) == 0 ) return 1;
+
+	m /= __gcd( n, m );
+
+	ll k;
+	ans = 1;
+
+	for( auto p: pr ){
+		if( m % p != 0 ) continue;
+		k = 0;
+		while( m % p == 0 )
+			m /= p, k++;
+		ans *= binpow( p , k - 1 ) * ( p - 1 );
+	}
+
+	if( m > 1 )
+		ans *= m - 1;
+
+	return ans;
 }
 
 int main(){
 	fastio;
-	//T = nxt();
-	//while(T--) cout << solve() << endl;
-	while(T--) solve();
+	T = nxt();
+	criba();
+	while(T--) cout << solve() << endl;
+	//while(T--) solve();
 	return 0;
 }

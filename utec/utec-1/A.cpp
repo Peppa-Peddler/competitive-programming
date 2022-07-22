@@ -4,6 +4,9 @@
 #define EB emplace_back
 #define PB push_back
 #define PF push_front
+#define QTOP front
+#define STOP top
+#define PQTOP top
 
 #define PQ priority_queue
 
@@ -53,19 +56,32 @@ typedef tuple<int, int> Node;
 
 ll nxt() { ll x; cin >> x; return x; }
 
-#define N N5
+#define N N6 + 10
 
 ll n, m, T = 1, ans;
 
-ll solve(){
+bool primes[ N ];
+void criba(bool *prime, int Nmax){
+  for(int i = 0; i < Nmax; i++) prime[ i ] = true;
+  for(int i = 4; i < Nmax; i+=2) prime[ i ] = false;
+  for(ll i = 3; i*i < Nmax; i+=2)
+    if( prime[ i ] )
+      for(ll j = i*i; j < Nmax; j += 2*i)
+          prime[ j ] = false;
+  prime[ 1 ] = false;
+}
+
+string solve(){
 	n = nxt();
-	return 0;
+	m = (int) sqrt( n );
+	return m * m == n and primes[ m ] ? "YES" : "NO";
 }
 
 int main(){
 	fastio;
-	//T = nxt();
-	//while(T--) cout << solve() << endl;
-	while(T--) solve();
+	T = nxt();
+	criba(primes, N);
+	while(T--) cout << solve() << endl;
+	//while(T--) solve();
 	return 0;
 }

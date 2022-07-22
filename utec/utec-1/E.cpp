@@ -1,9 +1,14 @@
-#include<bits/stdc++.h>
+#include<iostream>
+#include<vector>
+#include<algorithm>
 
 #define EP emplace
 #define EB emplace_back
 #define PB push_back
 #define PF push_front
+#define QTOP front
+#define STOP top
+#define PQTOP top
 
 #define PQ priority_queue
 
@@ -43,29 +48,59 @@
 using namespace std;
 
 typedef long long ll;
-typedef pair<ll, ll> ii;
-typedef pair<ll, ii > tri;
 typedef vector<ll> vi;
-typedef vector<ii> vii;
-typedef vector<vi> graph;
-typedef vector<vii> edges;
-typedef tuple<int, int> Node;
-
 ll nxt() { ll x; cin >> x; return x; }
 
 #define N N5
 
 ll n, m, T = 1, ans;
 
-ll solve(){
+vi d, t;
+
+ll solve(int id){
 	n = nxt();
+
+	ll a = 0, b = 0, x, y, i;
+	vi A, B;
+
+	while( n % 2 == 0 ) n /= 2, a++;
+	while( n % 3 == 0 ) n /= 3, b++;
+
+	while( n > 1 ){
+		i = 0;
+		while( n < d[ i ] or n % 3 != d[ i ] % 3 ) i++;
+		n -= d[ i ];
+		A.PB( 31 - i + a );
+		B.PB( b );
+		while( n % 2 == 0 ) n /= 2, a++;
+		while( n % 3 == 0 ) n /= 3, b++;
+	}
+
+	if( n == 1 ){
+		A.PB( a );
+		B.PB( b );
+	}
+
+	cout << id << " " << len(A) << " ";
+
+	R(i, len(A)){
+		cout << "[" << A[ i ] << "," << B[ i ] << "]" << " ";
+	}
+
+	cout << endl;
 	return 0;
 }
 
 int main(){
 	fastio;
-	//T = nxt();
+	T = nxt();
 	//while(T--) cout << solve() << endl;
-	while(T--) solve();
+
+	R(i, 32)
+		d.PB( 1ll << i );
+
+	reverse(all(d));
+
+	R(i, T) solve( i + 1 );
 	return 0;
 }

@@ -4,6 +4,9 @@
 #define EB emplace_back
 #define PB push_back
 #define PF push_front
+#define QTOP front
+#define STOP top
+#define PQTOP top
 
 #define PQ priority_queue
 
@@ -59,6 +62,35 @@ ll n, m, T = 1, ans;
 
 ll solve(){
 	n = nxt();
+
+	vi O, ans;
+	map <ll, ll> F;
+
+	R( i, n * n ){
+		cin >> m;
+		O.PB( m );
+		F[ m ]++;
+	}
+
+	sort(all(O));
+
+	REF( i, len( O ) - 1 , 0 ){
+		m = O[ i ];
+		if( F[ m ] == 0 ) continue;
+
+		for( auto s: ans )
+			F[ __gcd( m , s ) ] -= 2;
+
+		F[ m ]--;
+		ans.PB( m );
+
+		if( len( ans ) == n ) break;
+	}
+
+	for( auto s: ans )
+		cout << s << " ";
+	cout << endl;
+
 	return 0;
 }
 

@@ -4,6 +4,9 @@
 #define EB emplace_back
 #define PB push_back
 #define PF push_front
+#define QTOP front
+#define STOP top
+#define PQTOP top
 
 #define PQ priority_queue
 
@@ -53,19 +56,67 @@ typedef tuple<int, int> Node;
 
 ll nxt() { ll x; cin >> x; return x; }
 
-#define N N5
+const int N = 15000000;
+vector<int> lp(N+1);
+vector<int> pr;
+vector<int> F(N, 0);
+vector<int> O, Q;
 
 ll n, m, T = 1, ans;
 
+void criba(){
+	for (int i=2; i <= N; ++i) {
+		if (lp[i] == 0) {
+			lp[i] = i;
+			pr.push_back(i);
+		}
+		for (int j=0; j < (int)pr.size() && pr[j] <= lp[i] && i*pr[j] <= N; ++j) {
+			lp[i * pr[j]] = pr[j];
+		}
+	}
+}
+
 ll solve(){
+
 	n = nxt();
-	return 0;
+	ll g = 0;
+
+	R(i, n){
+		cin >> m;
+		g = __gcd(m, g);
+		O.PB(m);
+	}
+
+	for(auto s: O){
+		if( s / g != 1 )
+			Q.PB( s / g );
+		else
+			ans++;
+	}
+
+	if(len(Q) == 0)
+		return -1;
+
+	criba();
+
+	for(auto s: Q){
+		while( lp[ s ] > 0 ){
+			m = lp[ s ];
+			F[ m ] ++;
+			while( s % m == 0 )
+				s /= m;
+		}
+		if( s > 1 )
+			F[ s ]++;
+	}
+
+	return ans + len( Q ) - *max_element(all(F));
 }
 
 int main(){
 	fastio;
 	//T = nxt();
-	//while(T--) cout << solve() << endl;
-	while(T--) solve();
+	while(T--) cout << solve() << endl;
+	//while(T--) solve();
 	return 0;
 }

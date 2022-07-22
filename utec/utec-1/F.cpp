@@ -4,6 +4,9 @@
 #define EB emplace_back
 #define PB push_back
 #define PF push_front
+#define QTOP front
+#define STOP top
+#define PQTOP top
 
 #define PQ priority_queue
 
@@ -59,6 +62,22 @@ ll n, m, T = 1, ans;
 
 ll solve(){
 	n = nxt();
+	ll a, b;
+
+	set < ll > ans;
+
+	for( ll i = 1; i * i <= n ; i++ ){
+		if( n % i != 0 ) continue;
+		a = n / i;
+		b = i;
+		ans.insert( b * ( a * (a - 1) / 2 ) + a );
+		ans.insert( a * ( b * (b - 1) / 2 ) + b );
+	}
+
+	for(auto s: ans)
+		cout << s << " ";
+	cout << endl;
+
 	return 0;
 }
 

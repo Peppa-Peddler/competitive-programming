@@ -4,6 +4,9 @@
 #define EB emplace_back
 #define PB push_back
 #define PF push_front
+#define QTOP front
+#define STOP top
+#define PQTOP top
 
 #define PQ priority_queue
 
@@ -59,13 +62,15 @@ ll n, m, T = 1, ans;
 
 ll solve(){
 	n = nxt();
-	return 0;
+	for( ll i = 1; i * i <= n; i++ )
+		ans += !(n % i) << 1 - (i * i == n);
+	return ans;
 }
 
 int main(){
 	fastio;
 	//T = nxt();
-	//while(T--) cout << solve() << endl;
-	while(T--) solve();
+	while(T--) cout << solve() << endl;
+	//while(T--) solve();
 	return 0;
 }

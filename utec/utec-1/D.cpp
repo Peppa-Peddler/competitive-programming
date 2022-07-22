@@ -4,6 +4,9 @@
 #define EB emplace_back
 #define PB push_back
 #define PF push_front
+#define QTOP front
+#define STOP top
+#define PQTOP top
 
 #define PQ priority_queue
 
@@ -59,6 +62,49 @@ ll n, m, T = 1, ans;
 
 ll solve(){
 	n = nxt();
+
+	set<ll> O;
+	vi L, R;
+
+	R(i, n)
+		O.insert( nxt() );
+
+	ll min = *O.begin(),
+	   tmp = min;
+
+	while( true ){
+		if( O.count( 2 * tmp ) ) {
+			R.push_back( 2 * tmp );
+			tmp *= 2;
+		} else if( tmp % 3 == 0 && O.count( tmp / 3 ) ){
+			R.push_back( tmp / 3 );
+			tmp /= 3;
+		} else
+			break;
+	}
+
+	tmp = min;
+
+	while( true ){
+		if( tmp % 2 == 0 && O.count( tmp / 2 ) ) {
+			L.push_back( tmp / 2 );
+			tmp /= 2;
+		} else if( O.count( tmp * 3 ) ){
+			L.push_back( tmp * 3 );
+			tmp *= 3;
+		} else
+			break;
+	}
+
+	reverse(all(L));
+
+	for(auto s: L)
+		cout << s << " ";
+	cout << min << " ";
+	for(auto s: R)
+		cout << s << " ";
+	cout << endl;
+
 	return 0;
 }
 
