@@ -58,125 +58,110 @@ ll nxt() { ll x; cin >> x; return x; }
 
 #define N N4
 
-ll n, m, T = 1, ans;
-
-int v[ N ];
+ll n, m, T = 1;
 
 int q( int t, int i, int j, int x ){
 	int ans;
-	cout << "? " << t << " " << i << " " << j << " " << x << endl;
+	cout << "? " << t << " " << i + 1 << " " << j + 1 << " " << x << endl;
 	cin >> ans;
 	return ans;
 }
 
-void show_ans(){
-	cout << "! " << endl;
-	R(i, n)
-		cout << v[ i ] << " ";
-	cout << endl;
+int Qmax(int i, int j){
+	int res = q(1, i, j, n - 1);
+	if( res == n - 1 )
+		return q(1, j, i, n - 1);
+	return res;
 }
 
-void one_found(int i, int o = 1){
-
-	v[ i - 1 ] = 1;
-	FER( j , o - 1 , n ){
-		if( j == i - 1 ) continue;
-		v[ j ] = q( 1 , i , j + 1 , n - 1 );
-	}
-	return show_ans();
-
+int Qmin(int i, int j){
+	int res = q(2, i, j, 1);
+	if( res == 2 )
+		return q(2, j, i, 1);
+	return res;
 }
 
-void two_found(int i, int o = 1){
-
-	v[ i - 1 ] = 2;
-	FER( j , o - 1 , n ){
-		if( j == i - 1 ) continue;
-		v[ j ] = q( 1 , i , j + 1 , n - 1 );
-		if( v[ j ] == 2 )
-			v[ j ] = 1;
-	}
-	return show_ans();
-
-}
-
-void val_found(int i, int val){
-
-	v[ i - 1 ] = val;
-
-	int BA, CB;
-	int one = -1;
-
-	for( int j = 4 ; j <= n - n%2 ; j += 2 ){
-
-		BA = q( 2 , j , i , 1 );
-
-		if( BA == 1 )
-			return one_found( j , j );
-		if( BA == 2 )
-			return two_found( j , j );
-
-		CB = q( 2 , j + 1 , j , 1 );
-
-		if( CB == 1 )
-			return one_found( j + 1 , j );
-		if( CB == 2 )
-			return two_found( j + 1 , j );
-
-		if( BA == val ){
-			if( CB < BA ){
-				V[ j ] = ;
-			}
-		}
-
-
-	}
-
-	return show_ans();
-
-}
+vi ans;
 
 void solve(){
 
-	int A = 1, B = 2, C = 3;
-	int AB, BA, BC, CB, AC, CA;
+	n = nxt();
 
-	AB = q( 2 , A , B , 1 );
-	BA = q( 2 , B , A , 1 );
+	ans.clear();
 
-	BC = q( 2 , B , C , 1 );
-	CB = q( 2 , C , B , 1 );
+	ll A, B, C, D;
 
-	AC = q( 2 , A , C , 1 );
-	CA = q( 2 , C , A , 1 );
+	A = Qmax( 0 , 1 );
+	B = Qmin( 1 , 0 );
 
-	if( AB == 1 )
-		return one_found( 1 );
-	if( BA == 1 )
-		return one_found( 2 );
-	if( CB == 1 )
-		return one_found( 3 );
+	C = Qmax( 0 , 2 );
+	D = Qmin( 2 , 0 );
 
-	if( AB == 2 and CA == 2 )
-		return two_found( 1 );
-	if( AB == 2 and BC == 2 )
-		return two_found( 2 );
-	if( BC == 2 and CA == 2 )
-		return two_found( 3 );
+	if( C > A ){
+		if( D == B ){
+			ans.PB( B );
+			ans.PB( A );
+		} else {
+			ans.PB( A );
+			ans.PB( B );
+		}
+	} else if ( A == C ) {
+		ans.PB( A );
+		ans.PB( B );
+	} else {
+		ans.PB( B );
+		ans.PB( A );
+	}
 
-	if( AB == CA )
-		return val_found( 1 , AB );
-	if( BC == BA )
-		return val_found( 2 , BC );
-	if( CA == CB )
-		return val_found( 3 , CA );
+	ll a = 0;
+	ll b = 1;
 
-	return 0;
+	if( ans[ a ] < ans[ b ] )
+		swap( a , b );
+
+	for( int i = 2; i < n - n%2 ; i += 2 ){
+		C = Qmax( i , i + 1 );
+		D = Qmin( i + 1 , i );
+		if( D > ans[ a ] ){
+			A = Qmax( a , i );
+			ans.PB( A );
+			ans.PB( C == A ? D : C );
+		} else if ( D > ans[ b ] ) {
+			B = Qmax( b , i );
+			ans.PB( B );
+			ans.PB( C == B ? D : C );
+		} else {
+			B = Qmin( i , b );
+			if( B != ans[ b ] ){
+				ans.PB( B );
+				ans.PB( C == B ? D : C );
+			} else {
+				ans.PB( C );
+				ans.PB( D );
+			}
+		}
+		if( ans[ a ] >= n - 1 )
+			a = ans[ i ] > ans[ i + 1 ] ? i : ( i + 1 );
+		if( ans[ b ] <= 2 )
+			b = ans[ i ] < ans[ i + 1 ] ? i : ( i + 1 );
+	}
+
+	if( n % 2 ){
+		C = Qmax( a , n - 1 );
+		D = Qmin( n - 1 , a );
+		ans.PB( ans[ a ] == C ? D : C );
+	}
+
+	cout << "! ";
+	for(auto s: ans)
+		cout << s << " ";
+	cout << endl;
+
 }
 
 int main(){
 	fastio;
-	//T = nxt();
+	T = nxt();
 	//	while(T--) cout << solve() << endl;
 	while(T--) solve();
 	return 0;
