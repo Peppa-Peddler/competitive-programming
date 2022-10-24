@@ -2,7 +2,7 @@
 
 ## Para Windows:
 - Visual Studio Code (VSCODE): [Link](https://code.visualstudio.com/Download)
-- Configurar C++ en VSCODE: [Link](https://code.visualstudio.com/docs/languages/cpp)
+- Configurar y compilar C++ en VSCODE: [Link](https://code.visualstudio.com/docs/languages/cpp)
 
 ## Hola Mundo
 
