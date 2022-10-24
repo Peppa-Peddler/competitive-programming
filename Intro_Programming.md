@@ -1,4 +1,4 @@
-# Clase de fundamentos de programación
+# Clase de fundamentos de programación (en c++)
 
 ## Para Windows:
 - Visual Studio Code (VSCODE): [Link](https://code.visualstudio.com/Download)
