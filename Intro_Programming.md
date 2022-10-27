@@ -39,3 +39,27 @@ cout << 3. / 4 + 10 << endl;
 cout << 3 / 4. + 10 << endl;
 cout << 3. / (4 + 10) << endl;
 ```
+#### Ejercicios:
+
+1. Pasar de minutos a horas:
+```
+Ingresar: Cantidad de minutos que han pasado desde las 00:00. (entero)
+Retornar: La hora en formato 24h. (entero)
+```
+```
+Ejemplo:
+Input: 71
+Output: 1h 11m
+```
+
+2. Ángulo del reloj:
+```
+Ingresar: Hora, minutos y segundos. (enteros)
+Retornar: Angulo en grados sexagesimales que ha recorrido
+la manecilla horaria desde las 00:00. (flotante)
+```
+```
+Ejemplo:
+Input: 1 2 6
+Output: 31.05
+```
