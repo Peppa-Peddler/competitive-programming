@@ -8,7 +8,9 @@
 
 ### Clase 26 de octubre:
 
-- Mapa de programación: https://www.flickr.com/photos/95869671@N08/36231833334
+Mapa de Computer Science: https://www.flickr.com/photos/95869671@N08/36231833334
+
+- ¿Qué es programar?
 - Output: Función cout (Impresión)
 - operadores 
 - tipos de datos básicos (string / int)
