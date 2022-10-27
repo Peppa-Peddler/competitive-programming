@@ -8,6 +8,12 @@
 
 ### Clase 26 de octubre:
 
+- Mapa de programación
+- Output: Función cout (Impresión)
+- operadores 
+- tipos de datos básicos (string / int)
+- Input: Función cin (Lectura)
+
 #### Hola Mundo
 
 ```c++
