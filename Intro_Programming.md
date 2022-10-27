@@ -4,7 +4,11 @@
 - Visual Studio Code (VSCODE): [Link](https://code.visualstudio.com/Download)
 - Configurar y compilar C++ en VSCODE: [Link](https://code.visualstudio.com/docs/languages/cpp)
 
-## Hola Mundo
+## Clases:
+
+### Clase 26 de octubre:
+
+#### Hola Mundo
 
 ```c++
 #include <iostream>
@@ -15,7 +19,7 @@ int main()
 }
 ```
 
-## Función cout y operadores
+#### Función cout y operadores
 
 ```c++
 cout << 3 + 4 + 10 << endl;
