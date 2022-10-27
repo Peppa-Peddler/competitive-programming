@@ -8,7 +8,7 @@
 
 ### Clase 26 de octubre:
 
-- Mapa de programación
+- Mapa de programación: https://www.flickr.com/photos/95869671@N08/36231833334
 - Output: Función cout (Impresión)
 - operadores 
 - tipos de datos básicos (string / int)
