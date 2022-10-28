@@ -89,7 +89,7 @@ cout<< (11 % 5) <<endl; // = 1
 2. Obtener el último dígito de un número entero elevado a la 7ma potencia
 ```
 Input: Un número (entero)
-Output: La última cifra del número elevado a la 7ma potencia (entero)``
+Output: La última cifra del número elevado a la 7ma potencia (entero)
 ```
 ```
 Ejemplo 1:
