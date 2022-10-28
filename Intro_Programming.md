@@ -63,3 +63,41 @@ Ejemplo:
 Input: 1 2 6
 Output: 31.05
 ```
+## Operador Módulo (%):
+El operador ` % ` se usa para obtener el residuo de la división entera entre 2 números:
+`a%b = r` donde r es el residuo, el valor de r va entre 0 y b - 1:
+```c++
+cout<< ( 0 % 5) <<endl; // = 0
+cout<< ( 1 % 5) <<endl; // = 1
+cout<< ( 2 % 5) <<endl; // = 2
+cout<< ( 3 % 5) <<endl; // = 3
+cout<< ( 4 % 5) <<endl; // = 4
+
+cout<< ( 5 % 5) <<endl; // = 0
+cout<< ( 6 % 5) <<endl; // = 1
+cout<< ( 7 % 5) <<endl; // = 2
+cout<< ( 8 % 5) <<endl; // = 3
+cout<< ( 9 % 5) <<endl; // = 4
+
+cout<< (10 % 5) <<endl; // = 0
+cout<< (11 % 5) <<endl; // = 1
+//etc, el resultado del residuo es cíclico
+```
+
+### Ejercicios:
+1. Resolver los ejercicios de reloj usando el operador (%)
+2. Obtener el último dígito de un número entero elevado a la 7ma potencia
+```
+Input: Un número (entero)
+Output: La última cifra del número elevado a la 7ma potencia (entero)``
+```
+```
+Ejemplo 1:
+Input: 2
+Output: 8
+```
+```
+Ejemplo 2:
+Input: 7
+Output: 3
+```
