@@ -84,6 +84,15 @@ cout<< (11 % 5) <<endl; // = 1
 //etc, el resultado del residuo es cíclico
 ```
 
+### Propiedades de %:
+
+```
+(a + c)%c = a%c (el residuo es cíclico)
+(a + b)%c = (a%c + b%c)%c (distributiva en suma)
+(a*b)%c = ((a%c)*(b%c))%c (distributiva en multiplicación)
+a%10 = última cifra de a
+```
+
 ### Ejercicios:
 1. Resolver los ejercicios de reloj usando el operador (%)
 2. Obtener el último dígito de un número entero elevado a la 7ma potencia
