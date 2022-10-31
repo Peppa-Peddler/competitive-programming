@@ -110,3 +110,20 @@ Ejemplo 2:
 Input: 7
 Output: 3
 ```
+
+### Problemas con if / else
+
+1. Leer coordenadas (fila y columna) de dos lugares en el tablero y ver si tienen el mismo color.
+```
+Ejemplo 1:
+Input: 2 2 3 3
+Output: si
+```
+```
+Ejemplo 2:
+Input: 2 3 3 3
+Output: no
+```
+2. Leer coordenadas (fila y columna) de dos alfiles y ver si se atacan
+3. Leer coordenadas (fila y columna) de dos reinas y ver si se atacan
+
