@@ -127,3 +127,16 @@ Output: no
 2. Leer coordenadas (fila y columna) de dos alfiles y ver si se atacan
 3. Leer coordenadas (fila y columna) de dos reinas y ver si se atacan
 
+## WHILE
+
+```c++
+int main() {
+  int numero;
+  cin >> numero;
+  while( numero > 0 ){
+    cout << numero % 2;
+    numero /= 2;
+  }
+  cout << endl;
+}
+```
