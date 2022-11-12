@@ -152,7 +152,7 @@ output:
 233234
 ```
 
-12. Leer un string en sistema ternario (base 3) y responder con su representación decimal:
+13. Leer un string en sistema ternario (base 3) y responder con su representación decimal:
 ```
 input:
 100
@@ -165,3 +165,5 @@ input:
 output:
 233234
 ```
+
+14. Ajedrez: Leer coordenadas (fila y columna) de dos caballos y ver si se atacan
