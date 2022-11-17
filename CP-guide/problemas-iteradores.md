@@ -18,7 +18,7 @@ Sea dos strings `A` y `B`. La siguiente proposición `A < B` es verdadera, si es
 - En caso `A[1] == B[1]`, entonces `A < B` si `A[2] < B[2]`. (ie. **aaa**zzsddd < **aab**frgthygijirjhi)
 - Y así con todos los demás elementos. 
 - Si ningún elemento de `A` es menor que su correspondiente en `B`, y `A.size() < B.size()`, entonces `A < B`. (ie. aaaa < aaaab)
-Dado dos strings `A` y `B`, responder `Si` si es que `A < B` caso contrario, responder `No`
+Dado dos strings `A` y `B`, responder `Si` si es que `A < B` caso contrario, responder `No`. Considerar solamente strings con letras minúsculas.
 ```
 input: abcde accc
 output: Si
