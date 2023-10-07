@@ -45,27 +45,27 @@ Sábado 07 Octubre
 
 ## Problemas de la semana:
 
-### We, Día 1:
+### Sa, Día 1:
 - https://codeforces.com/contest/1650/problem/A
 - https://codeforces.com/contest/1216/problem/A
 - https://codeforces.com/contest/1625/problem/A
 
-### Th, Día 2:
+### Su, Día 2:
 - https://codeforces.com/contest/1621/problem/A
 - https://codeforces.com/contest/1616/problem/A
 - https://codeforces.com/contest/1555/problem/A
 
-### Fr, Día 3:
+### Mo, Día 3:
 - https://codeforces.com/problemset/problem/22/A
 - https://codeforces.com/contest/1312/problem/B
 - https://codeforces.com/contest/855/problem/A
 
-### Sa, Día 4:
+### Tu, Día 4:
 https://codeforces.com/problemset/problem/158/A
 - https://codeforces.com/contest/812/problem/C
 - https://codeforces.com/contest/371/problem/C
 
-### Su, Día 5:
+### We, Día 5:
 -
 
 
