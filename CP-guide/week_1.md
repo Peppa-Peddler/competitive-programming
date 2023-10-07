@@ -11,7 +11,7 @@ Estado: (Ongoing) Este documento ser irá actualizando durante la semana.
 
 ## Sesiones de la semana:
 #### Fechas:
-Viernes 03 9pm
+Sábado 07 Octubre
 #### Contenido:
 - Upsolving de problemas incompletos.
 - Complejidad computacional y Jueces Online
